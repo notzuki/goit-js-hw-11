@@ -34,15 +34,16 @@ form.addEventListener('submit', event => {
       }
 
       createGallery(data.hits);
-      setTimeout(hideLoader, 100);
       form.reset();
     })
     .catch(error => {      
       iziToast.error({
         title: 'Error',
         message: 'Something went wrong. Please try again later.',
-      })
+      });
       console.error(error);
-      hideLoader();
     })
+    .finally(() => {
+      hideLoader(); 
     });
+});
